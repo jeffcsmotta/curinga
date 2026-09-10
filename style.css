@@ -2,6 +2,7 @@
  * Curinga Cozinha Personalizada - Light & Clean Artisanal Design System
  * Congelados Artesanais com Personalidade
  * Cozinha Caseira • Caxias do Sul - RS
+ * Onira Labs Master Standard (Clean Light Theme)
  */
 
 :root {
@@ -11,22 +12,22 @@
     --primary-red-light: #FDF2F0;
     --primary-red-border: #F5D5D0;
 
-    --accent-gold: #C07D2B;         /* Warm Toasted Golden Honey */
+    --accent-gold: #C07D2B;         /* Warm Toasted Honey */
     --accent-gold-light: #FDF6EC;
     --accent-green: #2E7D32;        /* Fresh Herb Green */
     --accent-green-light: #E8F5E9;
     --accent-green-border: #C8E6C9;
 
-    /* Backgrounds: Warm, Clean, Approchable */
+    /* Backgrounds: Warm, Clean, Natural */
     --bg-page: #FAF8F5;             /* Warm clean cream stone */
     --bg-surface: #FFFFFF;          /* Pure White */
     --bg-card: #FFFFFF;             /* Crisp White Cards */
-    --bg-card-alt: #F4F1EA;         /* Subtle Warm Section Background */
+    --bg-card-alt: #F4F1EA;         /* Subtle Section Background */
     --bg-input: #FFFFFF;
 
     /* Texts: High Contrast, Natural, Crisp */
     --text-title: #1C1917;          /* Charcoal Black */
-    --text-main: #44403C;           /* Warm Dark Gray */
+    --text-main: #44403C;           /* Warm Dark Stone Gray */
     --text-muted: #78716C;          /* Medium Stone Gray */
     --text-light: #A8A29E;
 
@@ -66,7 +67,6 @@ body {
     color: var(--text-main);
     font-family: var(--font-family);
     line-height: 1.5;
-    padding-top: 0; /* Header eliminated */
     padding-bottom: 96px; /* Space for mobile floating bar */
     -webkit-font-smoothing: antialiased;
 }
@@ -78,194 +78,200 @@ body {
     padding: 0 18px;
 }
 
-/* ==========================================================================
-   Hero Banner (Top of Page)
-   ========================================================================== */
-.hero-banner {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F5F1E8 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 44px 0 36px;
-    text-align: center;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
-.hero-content {
+/* ==========================================================================
+   Header Padrão Onira.fly (Sticky Top)
+   ========================================================================== */
+.site-header {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    padding: 10px 0;
+    transition: all 0.25s ease;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.brand-text-block {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 760px;
 }
 
-.hero-top-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 14px;
-    background: var(--primary-red-light);
-    border: 1px solid var(--primary-red-border);
-    border-radius: var(--radius-pill);
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--primary-red);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-}
-
-.hero-brand-block {
-    margin-bottom: 12px;
-}
-
-.hero-brand-name {
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
+.brand-logo-name {
+    font-size: 1.35rem;
     font-weight: 800;
     color: var(--text-title);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 1.1;
 }
 
-.hero-brand-tagline {
-    font-size: 0.92rem;
+.brand-logo-sub {
+    font-size: 0.68rem;
     font-weight: 600;
     color: var(--primary-red);
-    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 2px;
+    letter-spacing: 0.08em;
 }
 
-.hero-title {
-    font-size: clamp(1.25rem, 3vw, 1.7rem);
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-compact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #F1F5F9;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.76rem;
     font-weight: 700;
     color: var(--text-title);
-    line-height: 1.3;
-    margin-bottom: 12px;
 }
 
-.hero-title span {
-    color: var(--primary-red);
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+    animation: statusPulse 2s infinite;
 }
 
-.hero-subtitle {
-    font-size: 0.94rem;
-    color: var(--text-main);
-    line-height: 1.6;
-    max-width: 600px;
-    margin-bottom: 22px;
+@keyframes statusPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.75; }
 }
 
-.hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 22px;
-}
-
-.hero-badge {
+.btn-buy-site {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 14px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
+    background: #1D4ED8;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px 13px;
     border-radius: var(--radius-pill);
     font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-main);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.hero-badge i {
-    color: var(--primary-red);
-}
-
-.hero-cta-row {
-    margin-top: 4px;
-}
-
-.btn-hero-wa {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    background: #25D366;
-    color: #FFFFFF;
-    font-size: 0.88rem;
     font-weight: 700;
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
-.btn-hero-wa:hover {
-    background: #1FB855;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+.btn-buy-site:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}
+
+.btn-cart-trigger {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--primary-red);
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-family);
+    font-size: 0.86rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(186, 60, 42, 0.25);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-cart-trigger:hover {
+    background: var(--primary-red-hover);
+    transform: translateY(-1px);
+}
+
+.cart-total-header {
+    background: rgba(0, 0, 0, 0.16);
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.cart-count-badge {
+    background: #FFFFFF;
+    color: var(--primary-red);
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .status-compact {
+        display: none;
+    }
+    .btn-buy-text {
+        display: none;
+    }
+    .btn-buy-site {
+        padding: 8px;
+    }
+    .cart-btn-label {
+        display: none;
+    }
 }
 
 /* ==========================================================================
-   Category Nav & Search Bar
+   Catalog Nav Section: Busca & Categorias (Sticky Abaixo do Header)
    ========================================================================== */
 .catalog-nav-section {
     position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(250, 248, 245, 0.96);
+    top: 58px;
+    z-index: 850;
+    background: rgba(250, 248, 245, 0.98);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 14px 0;
-}
-
-.catalog-nav-inner {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-}
-
-.catalog-nav-inner::-webkit-scrollbar {
-    display: none;
-}
-
-.cat-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 18px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: var(--text-main);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-}
-
-.cat-pill:hover {
-    background: #F4F1EA;
-    border-color: #DCD6CC;
-}
-
-.cat-pill.active {
-    background: var(--primary-red);
-    border-color: var(--primary-red);
-    color: #FFFFFF;
-    box-shadow: 0 3px 10px rgba(186, 60, 42, 0.25);
-}
-
-.cat-pill.active i {
-    color: #FFFFFF;
+    padding: 12px 0 10px;
 }
 
 .search-box-wrap {
     position: relative;
-    margin-top: 10px;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .search-icon {
@@ -285,7 +291,7 @@ body {
     background: var(--bg-surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-pill);
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     color: var(--text-title);
     font-family: var(--font-family);
     outline: none;
@@ -309,11 +315,57 @@ body {
     color: var(--text-muted);
 }
 
+.catalog-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+}
+
+.catalog-nav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.cat-pill:hover {
+    background: #F4F1EA;
+    border-color: #DCD6CC;
+}
+
+.cat-pill.active {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: #FFFFFF;
+    box-shadow: 0 3px 10px rgba(186, 60, 42, 0.22);
+}
+
+.cat-pill.active i {
+    color: #FFFFFF;
+}
+
 /* ==========================================================================
    Concept Banner
    ========================================================================== */
 .concept-banner {
-    padding: 22px 0 10px;
+    padding: 18px 0 8px;
 }
 
 .concept-inner {
@@ -337,7 +389,7 @@ body {
     color: var(--primary-red);
     background: var(--primary-red-light);
     border: 1px solid var(--primary-red-border);
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: var(--radius-pill);
 }
 
@@ -348,10 +400,10 @@ body {
 }
 
 /* ==========================================================================
-   Product Grid & Cards (Cards Claros)
+   Product Grid & Cards (Cards Claros & Apetitosos)
    ========================================================================== */
 .catalog-section {
-    padding: 14px 0 44px;
+    padding: 12px 0 44px;
 }
 
 .catalog-grid {
@@ -1257,7 +1309,7 @@ body {
 }
 
 /* ==========================================================================
-   Mobile Floating Bar
+   Barra Flutuante Inferior de Pedido (Mobile)
    ========================================================================== */
 .cart-floating-bar {
     position: fixed;
@@ -1313,7 +1365,7 @@ body {
 }
 
 /* ==========================================================================
-   WhatsApp Floating Button
+   Botão Flutuante WhatsApp
    ========================================================================== */
 .whatsapp-float {
     position: fixed;
@@ -1339,7 +1391,7 @@ body {
 }
 
 /* ==========================================================================
-   Onira Proposal Widget (Discreto)
+   Widget Proposta Comercial Onira (Discreto)
    ========================================================================== */
 .onira-cta {
     position: fixed;
@@ -1406,7 +1458,7 @@ body {
 
 @media (max-width: 640px) {
     .onira-cta {
-        display: none; /* Keep clean on mobile to avoid clutter */
+        display: none; /* Mantém limpo no mobile para evitar poluição */
     }
 }
 

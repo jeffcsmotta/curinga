@@ -104,7 +104,7 @@ const PRODUCTS = [
 
 // Categorias do Catálogo
 const DEFAULT_CATEGORIES = [
-    { id: 'todos', name: 'Todos', icon: 'layout-grid' },
+    { id: 'todos', name: 'Todos os Sabores', icon: 'utensils' },
     { id: 'cremes', name: 'Cremes & Sopas', icon: 'soup' },
     { id: 'molhos', name: 'Molhos & Ragus', icon: 'flame' },
     { id: 'caldos', name: 'Caldos Especiais', icon: 'droplets' }
@@ -362,7 +362,7 @@ window.addToCartFromModal = function() {
     saveCartToStorage();
     updateCartUI();
     closeProductModal();
-    showToast(`${currentModalProduct.name} adicionado ao pedido!`);
+    showToast(`✓ ${currentModalProduct.name} adicionado ao pedido!`);
 };
 
 // Gerenciamento do Carrinho
@@ -414,8 +414,24 @@ window.setPaymentMethod = function(method) {
 function updateCartUI() {
     const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const subtotalFormatted = formatCurrency(subtotal);
 
-    // Floating bar
+    // Header Cart Controls
+    const cartCountEl = document.getElementById('cart-count');
+    const cartTotalNavEl = document.getElementById('cart-total-nav');
+    const cartNavBtn = document.getElementById('btn-cart-nav');
+
+    if (cartCountEl) {
+        cartCountEl.textContent = totalItems;
+    }
+    if (cartTotalNavEl) {
+        cartTotalNavEl.textContent = subtotalFormatted;
+    }
+    if (cartNavBtn) {
+        cartNavBtn.classList.toggle('has-items', totalItems > 0);
+    }
+
+    // Floating Bar (Mobile)
     const floatingBar = document.getElementById('cart-floating-bar');
     const floatingCount = document.getElementById('floating-cart-count');
     const floatingTotal = document.getElementById('floating-cart-total');
@@ -427,17 +443,17 @@ function updateCartUI() {
         floatingCount.textContent = totalItems === 1 ? '1 item' : `${totalItems} itens`;
     }
     if (floatingTotal) {
-        floatingTotal.textContent = formatCurrency(subtotal);
+        floatingTotal.textContent = subtotalFormatted;
     }
 
-    // Cart drawer items
+    // Cart Drawer Items List
     renderCartItems();
 
-    // Cart totals
+    // Cart Drawer Totals
     const subtotalEl = document.getElementById('cart-subtotal-val');
     const totalEl = document.getElementById('cart-total-val');
-    if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
-    if (totalEl) totalEl.textContent = formatCurrency(subtotal);
+    if (subtotalEl) subtotalEl.textContent = subtotalFormatted;
+    if (totalEl) totalEl.textContent = subtotalFormatted;
 }
 
 function renderCartItems() {

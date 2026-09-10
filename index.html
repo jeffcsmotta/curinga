@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Curinga Cozinha Personalizada | Congelados Artesanais</title>
-    <meta name="description" content="Curinga Cozinha Personalizada — Cremes, molhos e caldos congelados artesanais feitos com amor, tempero e personalidade. Peça direto pelo WhatsApp! (54) 99101-8416">
+    <meta name="description" content="Curinga Cozinha Personalizada — Cremes, molhos e caldos congelados artesanais feitos com amor, tempero e personalidade em Caxias do Sul. Peça pelo WhatsApp!">
     <meta name="theme-color" content="#FAF8F5">
 
     <!-- Open Graph / Social -->
@@ -22,78 +22,69 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-    <!-- Hero Banner (Starts at Top — No Header) -->
-    <section class="hero-banner">
-        <div class="container hero-content">
-            <div class="hero-top-badge">
-                <i data-lucide="sparkles" style="width:13px;height:13px;"></i>
-                <span>Cozinha Artesanal &bull; Caxias do Sul</span>
-            </div>
-
-            <div class="hero-brand-block">
-                <h1 class="hero-brand-name">Curinga</h1>
-                <p class="hero-brand-tagline">Cozinha Personalizada</p>
-            </div>
-
-            <h2 class="hero-title">
-                Feito com amor, tempero<br>e <span>personalidade.</span>
-            </h2>
-
-            <p class="hero-subtitle">
-                Cremes, molhos, ragus e caldos congelados artesanais. Sabor caseiro de verdade, ingredientes selecionados e sem conservantes artificiais.
-            </p>
-
-            <div class="hero-badges">
-                <div class="hero-badge">
-                    <i data-lucide="snowflake" style="width:15px;height:15px;"></i>
-                    <span>Pronta Entrega</span>
+    <!-- Cabeçalho Padrão Onira.fly (Sticky Top) -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-wrapper" aria-label="Página Inicial Curinga Cozinha">
+                <div class="brand-text-block">
+                    <span class="brand-logo-name">Curinga</span>
+                    <span class="brand-logo-sub">Cozinha Personalizada</span>
                 </div>
-                <div class="hero-badge">
-                    <i data-lucide="leaf" style="width:15px;height:15px;"></i>
-                    <span>Sem Conservantes</span>
-                </div>
-                <div class="hero-badge">
-                    <i data-lucide="map-pin" style="width:15px;height:15px;"></i>
-                    <span>Caxias do Sul - RS</span>
-                </div>
-                <div class="hero-badge">
-                    <i data-lucide="credit-card" style="width:15px;height:15px;"></i>
-                    <span>PIX, Cartão e Dinheiro</span>
-                </div>
-            </div>
+                <h1 class="sr-only">Curinga Cozinha Personalizada — Congelados Artesanais</h1>
+            </a>
 
-            <div class="hero-cta-row">
-                <a href="https://wa.me/5554991018416?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20congelados%20da%20Curinga" target="_blank" rel="noopener noreferrer" class="btn-hero-wa">
-                    <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
-                    <span>Falar no WhatsApp &bull; (54) 99101-8416</span>
+            <div class="nav-actions">
+                <!-- Status do Estabelecimento -->
+                <div class="status-compact" id="header-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Pronta Entrega</span>
+                </div>
+
+                <!-- Botão Compre esse site -->
+                <a href="proposta.html" class="btn-buy-site" title="Compre este site pronto para o seu negócio">
+                    <i data-lucide="zap" style="width:14px;height:14px;color:#FEF08A;fill:#FEF08A;"></i>
+                    <span class="btn-buy-text">Compre este site</span>
                 </a>
+
+                <!-- Botão Carrinho / Pedido no Topo -->
+                <button type="button" class="btn-cart-trigger" id="btn-cart-nav" onclick="window.openCart()" aria-label="Ver Carrinho de Pedidos">
+                    <i data-lucide="shopping-bag" style="width:16px;height:16px;"></i>
+                    <span class="cart-btn-label">Pedido</span>
+                    <span class="cart-total-header" id="cart-total-nav">R$ 0,00</span>
+                    <span class="cart-count-badge" id="cart-count">0</span>
+                </button>
             </div>
         </div>
-    </section>
+    </header>
+
+    <!-- (HERO ELIMINADO — A PÁGINA VAI DIRETO AO CARDÁPIO E NAVEGAÇÃO) -->
 
     <main>
-        <!-- Category Navigation & Search -->
+        <!-- Category Navigation & Search Bar (Sticky Below Header) -->
         <section class="catalog-nav-section">
             <div class="container">
-                <div class="catalog-nav-inner" id="category-nav">
-                    <!-- Injected by app.js -->
-                </div>
-
+                <!-- Barra de Busca -->
                 <div class="search-box-wrap">
                     <i data-lucide="search" class="search-icon"></i>
-                    <input type="text" id="search-input" class="search-input" placeholder="Buscar creme, molho, caldo..." oninput="window.handleSearch(event)">
+                    <input type="text" id="search-input" class="search-input" placeholder="Buscar sabor (aspargos, ragu, aipim, queijo, pesto, caldo)..." oninput="window.handleSearch(event)">
                     <button type="button" class="btn-clear-search" id="btn-clear-search" onclick="window.clearSearch()" style="display:none;" aria-label="Limpar busca">
                         <i data-lucide="x" style="width:16px;height:16px;"></i>
                     </button>
                 </div>
+
+                <!-- Pílulas de Categorias -->
+                <nav class="catalog-nav-inner" id="category-nav" aria-label="Categorias de Produtos">
+                    <!-- Injected by app.js -->
+                </nav>
             </div>
         </section>
 
-        <!-- Concept Banner -->
+        <!-- Concept Banner (Contexto da Categoria Selecionada) -->
         <section class="concept-banner">
             <div class="container">
                 <div class="concept-inner">
@@ -101,12 +92,12 @@
                     <span class="catalog-count-pill" id="products-count-badge">9 produtos</span>
                 </div>
                 <p class="concept-desc" id="category-concept-desc">
-                    Todos os produtos congelados disponíveis para pronta entrega. Feitos com amor, tempero e personalidade.
+                    Todos os produtos congelados artesanais disponíveis para pronta entrega em Caxias do Sul.
                 </p>
             </div>
         </section>
 
-        <!-- Product Grid -->
+        <!-- Grid de Produtos Claros -->
         <section class="catalog-section">
             <div class="container">
                 <div class="catalog-grid" id="catalog-grid">
@@ -116,7 +107,7 @@
         </section>
     </main>
 
-    <!-- Encomendas Section -->
+    <!-- Seção de Encomendas Especiais -->
     <section class="encomendas-section">
         <div class="container">
             <div class="encomendas-header">
@@ -126,7 +117,7 @@
                 </span>
                 <h2 class="section-title">Produtos Especiais sob Encomenda</h2>
                 <p class="section-subtitle">
-                    Preparamos receitas sob medida para a sua família ou evento. Consulte prazos e disponibilidade no WhatsApp.
+                    Preparamos receitas artesanais sob medida para você e sua família. Consulte prazos e disponibilidade pelo WhatsApp.
                 </p>
             </div>
 
@@ -147,7 +138,7 @@
                     </div>
                     <div class="encomenda-info">
                         <h3>Caldo para Sopa</h3>
-                        <p>Caldo rico e concentrado para sopas e cozidos, feito com ingredientes naturais selecionados.</p>
+                        <p>Caldo rico e concentrado para sopas e cozidos, feito com ingredientes frescos e selecionados.</p>
                     </div>
                 </div>
 
@@ -163,7 +154,7 @@
             </div>
 
             <div style="text-align: center;">
-                <a href="https://wa.me/5554991018416?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20encomenda%20especial%20na%20Curinga%20Cozinha.%20Poderia%20me%20informar%20sobre%20prazos%20e%20valores%3F" target="_blank" rel="noopener noreferrer" class="btn-encomenda">
+                <a href="https://wa.me/5554991018416?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20sobre%20encomendas%20especiais%20na%20Curinga%20Cozinha%20(Bucho%2C%20Caldo%20para%20Sopa%20ou%20Pesto)." target="_blank" rel="noopener noreferrer" class="btn-encomenda">
                     <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
                     <span>Consultar Encomendas no WhatsApp</span>
                 </a>
@@ -171,17 +162,17 @@
         </div>
     </section>
 
-    <!-- Story Section -->
+    <!-- História & Proposta de Valor -->
     <section class="story-section">
         <div class="container">
             <div class="story-grid">
                 <div class="story-content">
                     <span class="story-badge">
-                        <i data-lucide="heart" style="width:13px;height:13px;"></i> Cozinha Caseira &amp; Prática
+                        <i data-lucide="heart" style="width:13px;height:13px;"></i> Cozinha Caseira &bull; Caxias do Sul
                     </span>
                     <h2 class="story-title">Sabor de comida fresca com a <span>praticidade do congelado.</span></h2>
                     <p class="story-p">A Curinga Cozinha Personalizada nasceu da vontade de levar para a sua mesa produtos congelados que mantêm o aroma, a textura e o tempero de uma refeição feita na hora.</p>
-                    <p class="story-p">Cada creme, molho e caldo é preparado em pequenos lotes artesanais, sem aditivos químicos ou conservantes industriais — pronto para descongelar, aquecer e saborear.</p>
+                    <p class="story-p">Cada creme, molho e caldo é preparado artesanalmente em pequenos lotes, sem aditivos químicos ou conservantes industriais — pronto para aquecer e saborear.</p>
 
                     <div class="story-stats-row">
                         <div class="stat-box">
@@ -206,7 +197,7 @@
         </div>
     </section>
 
-    <!-- Trust Badges -->
+    <!-- Badges de Confiança -->
     <section class="trust-section">
         <div class="container">
             <div class="trust-grid">
@@ -216,7 +207,7 @@
                     </div>
                     <div>
                         <h3>Congelamento Rápido</h3>
-                        <p>Preserva nutrientes, textura e sabor autêntico de comida caseira.</p>
+                        <p>Preserva nutrientes, textura e o sabor autêntico da comida caseira.</p>
                     </div>
                 </div>
 
@@ -226,7 +217,7 @@
                     </div>
                     <div>
                         <h3>Sem Conservantes</h3>
-                        <p>Ingredientes 100% naturais, sem corantes ou conservantes químicos.</p>
+                        <p>Ingredientes 100% naturais, sem aditivos químicos ou corantes.</p>
                     </div>
                 </div>
 
@@ -245,15 +236,15 @@
                         <i data-lucide="message-circle" style="width:22px;height:22px;"></i>
                     </div>
                     <div>
-                        <h3>Atendimento Direto</h3>
-                        <p>Fale direto conosco pelo WhatsApp para tirar dúvidas e combinar entregas.</p>
+                        <h3>Atendimento WhatsApp</h3>
+                        <p>Atendimento direto e personalizado para tirar dúvidas e combinar entregas.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Rodapé -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-brand">Curinga Cozinha Personalizada</div>
@@ -263,7 +254,7 @@
         </div>
     </footer>
 
-    <!-- Product Modal -->
+    <!-- Modal de Produto -->
     <div class="modal-overlay" id="product-modal">
         <div class="modal-card" onclick="event.stopPropagation();">
             <button type="button" class="modal-close" onclick="window.closeProductModal()" aria-label="Fechar">
@@ -297,10 +288,10 @@
         </div>
     </div>
 
-    <!-- Cart Overlay -->
+    <!-- Overlay do Carrinho -->
     <div class="cart-overlay" id="cart-overlay" onclick="window.closeCart()"></div>
 
-    <!-- Cart Drawer -->
+    <!-- Drawer Lateral do Carrinho -->
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
             <span class="cart-header-title">Seu Pedido</span>
@@ -309,16 +300,16 @@
             </button>
         </div>
 
-        <!-- Cart Items -->
+        <!-- Itens do Carrinho -->
         <div class="cart-items-list" id="cart-items-list"></div>
 
-        <!-- Client Name -->
+        <!-- Nome do Cliente -->
         <div class="cart-form-group">
             <label class="cart-label" for="client-name">Seu Nome</label>
             <input type="text" id="client-name" class="cart-input" placeholder="Informe seu nome">
         </div>
 
-        <!-- Payment -->
+        <!-- Forma de Pagamento -->
         <div class="cart-form-group">
             <span class="cart-label">Forma de Pagamento</span>
             <div class="payment-methods-grid">
@@ -341,7 +332,7 @@
             </div>
         </div>
 
-        <!-- Checkout -->
+        <!-- Finalização -->
         <div class="cart-checkout-section">
             <div class="cart-summary-row">
                 <span>Subtotal</span>
@@ -363,7 +354,7 @@
         </div>
     </div>
 
-    <!-- Mobile Floating Bar -->
+    <!-- Barra Flutuante Inferior de Pedido (Mobile) -->
     <div class="cart-floating-bar" id="cart-floating-bar" onclick="window.openCart()">
         <div class="floating-bar-left">
             <i data-lucide="shopping-bag" style="width:20px;height:20px;"></i>
@@ -376,12 +367,12 @@
         </div>
     </div>
 
-    <!-- WhatsApp Float Button -->
+    <!-- Botão Flutuante WhatsApp -->
     <a href="https://wa.me/5554991018416?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20congelados%20da%20Curinga" target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Fale conosco no WhatsApp">
         <i data-lucide="message-circle" style="width:26px;height:26px;"></i>
     </a>
 
-    <!-- Floating Proposal Widget (Discreto) -->
+    <!-- Widget Proposta Comercial Onira (Discreto) -->
     <a href="proposta.html" class="onira-cta" id="onira-floating-cta" title="Ver proposta comercial do site">
         <img src="assets/jeff-avatar.webp" alt="Jefferson Motta" class="onira-avatar">
         <div class="onira-text-col">
@@ -393,7 +384,7 @@
         </div>
     </a>
 
-    <!-- App Script -->
+    <!-- Script da Aplicação -->
     <script src="app.js"></script>
 </body>
 </html>

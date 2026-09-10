@@ -7,10 +7,10 @@
 
 :root {
     /* Brand Palette: Warm Artisanal Culinary */
-    --primary-red: #BA3C2A;          /* Terracotta / Artisan Tomato Red */
-    --primary-red-hover: #A03121;
-    --primary-red-light: #FDF2F0;
-    --primary-red-border: #F5D5D0;
+    --primary-red: #E52E2E;          /* Vermelho Vivo Vibrante Gastronômico */
+    --primary-red-hover: #C81E1E;
+    --primary-red-light: #FEF2F2;
+    --primary-red-border: #FECACA;
 
     --accent-gold: #C07D2B;         /* Warm Toasted Honey */
     --accent-gold-light: #FDF6EC;
@@ -533,22 +533,28 @@ body {
 .btn-add-item {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 8px 16px;
-    background: var(--primary-red);
+    justify-content: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 16px;
+    background: #E52E2E;
     color: #FFFFFF;
     border: none;
     border-radius: var(--radius-pill);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: var(--font-family);
+    box-shadow: 0 3px 12px rgba(229, 46, 46, 0.38);
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .btn-add-item:hover {
-    background: var(--primary-red-hover);
-    transform: scale(1.04);
+    background: #C81E1E;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 5px 16px rgba(229, 46, 46, 0.48);
 }
 
 /* Empty Catalog Msg */
@@ -1528,24 +1534,24 @@ body.has-cart-bar .onira-cta {
     gap: 6px;
     height: 36px;
     padding: 0 16px;
-    background: var(--primary-red);
+    background: #E52E2E;
     color: #FFFFFF;
     border: none;
     border-radius: var(--radius-pill);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: var(--font-family);
-    box-shadow: 0 2px 8px rgba(185, 28, 28, 0.25);
+    box-shadow: 0 3px 12px rgba(229, 46, 46, 0.38);
     white-space: nowrap;
     box-sizing: border-box;
 }
 
 .btn-add-item:hover {
-    background: var(--primary-red-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.35);
+    background: #C81E1E;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 5px 16px rgba(229, 46, 46, 0.48);
 }
 
 .btn-add-item:active {

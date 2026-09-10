@@ -419,16 +419,16 @@ function getCardActionHtml(prodId) {
     if (cartItem && cartItem.qty > 0) {
         return `
             <div class="card-qty-control" onclick="event.stopPropagation()">
-                <button type="button" class="btn-card-qty-btn" onclick="window.changeCardQty('${prodId}', -1)" aria-label="Diminuir quantidade">−</button>
+                <button type="button" class="btn-card-qty-btn" onclick="event.stopPropagation(); window.changeCardQty('${prodId}', -1)" aria-label="Diminuir quantidade">−</button>
                 <span class="card-qty-count">${cartItem.qty}</span>
-                <button type="button" class="btn-card-qty-btn" onclick="window.changeCardQty('${prodId}', 1)" aria-label="Aumentar quantidade">+</button>
+                <button type="button" class="btn-card-qty-btn" onclick="event.stopPropagation(); window.changeCardQty('${prodId}', 1)" aria-label="Aumentar quantidade">+</button>
             </div>
         `;
     }
 
     return `
         <button type="button" class="btn-add-item" onclick="event.stopPropagation(); window.quickAddToCart('${prodId}')" aria-label="Adicionar ${prod.name}">
-            <i data-lucide="plus" style="width:14px;height:14px;"></i>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             <span>Pedir</span>
         </button>
     `;
@@ -509,6 +509,16 @@ function updateCartUI() {
         cartNavBtn.classList.toggle('has-items', totalItems > 0);
     }
 
+    const headerTrash = document.getElementById('btn-header-trash');
+    if (headerTrash) {
+        headerTrash.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+    }
+
+    const drawerTrash = document.getElementById('btn-drawer-trash');
+    if (drawerTrash) {
+        drawerTrash.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+    }
+
     // Floating Bar (Mobile)
     const floatingBar = document.getElementById('cart-floating-bar');
     const floatingCount = document.getElementById('floating-cart-count');
@@ -541,9 +551,9 @@ function renderCartItems() {
     if (cart.length === 0) {
         list.innerHTML = `
             <div class="cart-empty-state">
-                <i data-lucide="shopping-bag"></i>
+                <i data-lucide="shopping-bag" style="width:44px;height:44px;color:#78716C;"></i>
                 <p>Seu pedido está vazio.</p>
-                <p style="font-size:0.78rem;margin-top:4px;">Escolha cremes, molhos e caldos para começar.</p>
+                <p style="font-size:0.8rem;margin-top:4px;color:#A8A29E;">Escolha cremes, molhos e caldos para começar.</p>
             </div>
         `;
         if (window.lucide) window.lucide.createIcons();
@@ -557,14 +567,17 @@ function renderCartItems() {
                 <img src="${item.img}" alt="${item.name}" class="cart-item-img">
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
-                    ${item.obs ? `<div class="cart-item-obs">Obs: ${item.obs}</div>` : ''}
                     <div class="cart-item-price">${itemTotal}</div>
+                    ${item.obs ? `<div class="cart-item-obs">Obs: ${item.obs}</div>` : ''}
                 </div>
                 <div class="cart-item-actions">
-                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, -1)">−</button>
-                    <span style="font-size:0.86rem;font-weight:700;min-width:18px;text-align:center;">${item.qty}</span>
-                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, 1)">+</button>
+                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, -1)" aria-label="Diminuir">−</button>
+                    <span class="cart-item-qty-num">${item.qty}</span>
+                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, 1)" aria-label="Aumentar">+</button>
                 </div>
+                <button type="button" class="btn-remove-item" onclick="window.removeCartItem(${index})" title="Remover item" aria-label="Remover ${item.name}">
+                    <i data-lucide="trash-2" style="width:15px;height:15px;"></i>
+                </button>
             </div>
         `;
     }).join('');

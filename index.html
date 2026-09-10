@@ -51,6 +51,11 @@
                     <span class="btn-buy-text">Compre este site</span>
                 </a>
 
+                <!-- Botão Limpar Pedido / Lixeira Topo -->
+                <button type="button" class="btn-header-trash" id="btn-header-trash" onclick="window.clearCart()" title="Limpar pedido" aria-label="Limpar pedido" style="display:none;">
+                    <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+                </button>
+
                 <!-- Botão Carrinho / Pedido no Topo -->
                 <button type="button" class="btn-cart-trigger" id="btn-cart-nav" onclick="window.openCart()" aria-label="Ver Carrinho de Pedidos">
                     <i data-lucide="shopping-bag" style="width:16px;height:16px;"></i>
@@ -294,10 +299,18 @@
     <!-- Drawer Lateral do Carrinho -->
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
-            <span class="cart-header-title">Seu Pedido</span>
-            <button type="button" class="btn-close-cart" onclick="window.closeCart()" aria-label="Fechar Carrinho">
-                <i data-lucide="x" style="width:18px;height:18px;"></i>
-            </button>
+            <span class="cart-header-title">
+                <i data-lucide="shopping-bag" style="width:18px;height:18px;color:#EF4444;"></i>
+                <span>Seu Pedido</span>
+            </span>
+            <div class="cart-header-actions">
+                <button type="button" class="btn-header-trash" id="btn-drawer-trash" onclick="window.clearCart()" title="Limpar todo o pedido" aria-label="Limpar todo o pedido" style="display:none;">
+                    <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+                </button>
+                <button type="button" class="btn-close-cart" onclick="window.closeCart()" aria-label="Fechar Carrinho">
+                    <i data-lucide="x" style="width:18px;height:18px;"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Itens do Carrinho -->
@@ -348,9 +361,7 @@
                 <span>Enviar Pedido no WhatsApp</span>
             </button>
 
-            <div class="cart-onira-tag">
-                Curinga Cozinha Personalizada &bull; (54) 99101-8416
-            </div>
+            <div class="cart-onira-tag">Tecnologia by <strong>Onira Labs</strong></div>
         </div>
     </div>
 

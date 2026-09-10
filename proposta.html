@@ -40,8 +40,11 @@
 
         /* Ambient Glows */
         .ambient-glow-wrapper {
-            position: fixed;
-            inset: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             pointer-events: none;
             z-index: 0;
@@ -51,24 +54,38 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.035;
+            max-width: 100vw;
         }
 
         .glow-orange-top {
-            width: 600px;
-            height: 600px;
-            background: #F97316;
-            top: -200px;
+            width: 240px;
+            height: 240px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
+            background: radial-gradient(circle, #F59E0B 0%, transparent 70%);
         }
 
         .glow-amber-center {
-            width: 500px;
-            height: 500px;
-            background: #D97706;
-            top: 40%;
-            right: -100px;
+            width: 200px;
+            height: 200px;
+            top: 1200px;
+            right: 5%;
+            background: radial-gradient(circle, #D97706 0%, transparent 70%);
+            opacity: 0.025;
+        }
+
+        /* Restrição e foco no mobile: Fundo preto puro e nítido (#0A0A0A) */
+        @media (max-width: 768px) {
+            .ambient-glow-wrapper {
+                display: none !important; /* Elimina qualquer lavagem de cor/mancha marrom no mobile */
+            }
+            body {
+                background-color: #0A0A0A !important;
+            }
         }
 
         .section-container {

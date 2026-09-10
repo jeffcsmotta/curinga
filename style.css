@@ -1488,3 +1488,174 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+
+
+/* ==========================================================================
+   Card Quantity Controls (+ e - diretos no card)
+   ========================================================================== */
+.card-action-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.card-qty-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FAF8F5;
+    border: 1.5px solid var(--primary-red);
+    border-radius: var(--radius-pill);
+    padding: 3px 6px;
+    box-shadow: 0 2px 8px rgba(186, 60, 42, 0.15);
+}
+
+.btn-card-qty-btn {
+    background: var(--primary-red);
+    color: #FFFFFF;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+    user-select: none;
+    line-height: 1;
+}
+
+.btn-card-qty-btn:hover {
+    background: var(--primary-red-hover);
+    transform: scale(1.1);
+}
+
+.btn-card-qty-btn:active {
+    transform: scale(0.95);
+}
+
+.card-qty-count {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--text-title);
+    min-width: 22px;
+    text-align: center;
+    user-select: none;
+}
+
+/* ==========================================================================
+   Mobile Floating Widgets (Barra de Pedido, WhatsApp & Onira CTA)
+   ========================================================================== */
+.cart-floating-bar {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+    background: #181716;
+    color: #FFFFFF;
+    padding: 13px 20px;
+    border-radius: var(--radius-pill);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    z-index: 950;
+    cursor: pointer;
+    transition: transform 0.25s ease, bottom 0.25s ease;
+}
+
+.cart-floating-bar.visible {
+    display: flex;
+    animation: slideUpFloating 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpFloating {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    color: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4);
+    z-index: 900;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55);
+}
+
+.onira-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 7px 8px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    z-index: 900;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.25s ease;
+}
+
+.onira-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+}
+
+/* Quando há itens no carrinho e a barra inferior surge no mobile, sobe os outros widgets */
+body.has-cart-bar .whatsapp-float {
+    bottom: 84px;
+}
+
+body.has-cart-bar .onira-cta {
+    bottom: 84px;
+}
+
+@media (max-width: 640px) {
+    .onira-cta {
+        display: flex !important;
+        padding: 6px 12px 6px 6px;
+        max-width: 180px;
+    }
+    .onira-cta .onira-price-label {
+        display: none;
+    }
+    .onira-cta .onira-hook {
+        font-size: 0.68rem;
+    }
+    .onira-cta .onira-link-text {
+        font-size: 0.72rem;
+    }
+    .onira-avatar {
+        width: 34px;
+        height: 34px;
+    }
+}

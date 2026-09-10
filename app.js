@@ -269,15 +269,13 @@ function renderProducts() {
                     <p class="card-desc" onclick="window.openProductModal('${prod.id}')">${prod.desc || ''}</p>
                     <div class="card-bottom">
                         <div class="card-price-block" onclick="window.openProductModal('${prod.id}')">
-                            <span class="price-label">Preço:</span>
+                            <span class="price-label">Valor:</span>
                             <span class="price-value">${priceFormatted}</span>
                         </div>
-                        <button type="button" class="btn-add-item" onclick="event.stopPropagation(); window.openProductModal('${prod.id}')" aria-label="Adicionar ${prod.name}">
-                            <i data-lucide="plus" style="width:14px;height:14px;"></i>
-                            <span>Pedir</span>
-                        </button>
+                        <div class="card-action-wrap" id="card-action-${prod.id}">
+                            ${getCardActionHtml(prod.id)}
+                        </div>
                     </div>
-                </div>
             </article>
         `;
     }).join('');
@@ -411,7 +409,87 @@ window.setPaymentMethod = function(method) {
     }
 };
 
+
+// Retorna o HTML do botão ou seletor (+ / -) dentro do card
+function getCardActionHtml(prodId) {
+    const cartItem = cart.find(item => item.id === prodId);
+    const prod = PRODUCTS.find(p => p.id === prodId);
+    if (!prod) return '';
+
+    if (cartItem && cartItem.qty > 0) {
+        return `
+            <div class="card-qty-control" onclick="event.stopPropagation()">
+                <button type="button" class="btn-card-qty-btn" onclick="window.changeCardQty('${prodId}', -1)" aria-label="Diminuir quantidade">−</button>
+                <span class="card-qty-count">${cartItem.qty}</span>
+                <button type="button" class="btn-card-qty-btn" onclick="window.changeCardQty('${prodId}', 1)" aria-label="Aumentar quantidade">+</button>
+            </div>
+        `;
+    }
+
+    return `
+        <button type="button" class="btn-add-item" onclick="event.stopPropagation(); window.quickAddToCart('${prodId}')" aria-label="Adicionar ${prod.name}">
+            <i data-lucide="plus" style="width:14px;height:14px;"></i>
+            <span>Pedir</span>
+        </button>
+    `;
+}
+
+// Adição rápida com 1 toque diretamente no card
+window.quickAddToCart = function(prodId) {
+    const prod = PRODUCTS.find(p => p.id === prodId);
+    if (!prod) return;
+
+    const existingIndex = cart.findIndex(item => item.id === prodId);
+    if (existingIndex !== -1) {
+        cart[existingIndex].qty += 1;
+    } else {
+        cart.push({
+            id: prod.id,
+            name: prod.name,
+            price: prod.price,
+            img: prod.img,
+            qty: 1,
+            obs: ''
+        });
+    }
+
+    saveCartToStorage();
+    updateCartUI();
+    showToast(`+1 ${prod.name} adicionado ao pedido!`);
+};
+
+// Alteração direta de quantidade (+ e -) no card
+window.changeCardQty = function(prodId, delta) {
+    const index = cart.findIndex(item => item.id === prodId);
+    if (index === -1) {
+        if (delta > 0) window.quickAddToCart(prodId);
+        return;
+    }
+
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+        showToast("Item removido do pedido.");
+    }
+
+    saveCartToStorage();
+    updateCartUI();
+};
+
 function updateCartUI() {
+    // Atualizar classe has-cart-bar no body para posicionamento inteligente dos widgets flutuantes
+    const totalItemsCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.body.classList.toggle('has-cart-bar', totalItemsCount > 0);
+
+    // Atualizar botões de ação nos cards que estão visíveis
+    PRODUCTS.forEach(p => {
+        const wrap = document.getElementById(`card-action-${p.id}`);
+        if (wrap) {
+            wrap.innerHTML = getCardActionHtml(p.id);
+        }
+    });
+    if (window.lucide) window.lucide.createIcons();
+
     const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const subtotalFormatted = formatCurrency(subtotal);

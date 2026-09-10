@@ -1,0 +1,10 @@
+﻿{
+  "name": "Curinga Cozinha Personalizada",
+  "short_name": "Curinga Cozinha",
+  "description": "Congelados artesanais, cremes, molhos, ragus e caldos especiais em Caxias do Sul.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0D0A0A",
+  "theme_color": "#0D0A0A",
+  "orientation": "portrait-primary"
+}

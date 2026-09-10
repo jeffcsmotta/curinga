@@ -585,7 +585,7 @@ function renderCartItems() {
     if (window.lucide) window.lucide.createIcons();
 }
 
-// Enviar Pedido via WhatsApp
+// Enviar Pedido via WhatsApp (Formato Padrão de Comanda Onira.fly)
 window.submitOrderToWhatsApp = function() {
     if (cart.length === 0) {
         alert('Seu pedido está vazio! Adicione ao menos um item antes de enviar.');
@@ -599,43 +599,73 @@ window.submitOrderToWhatsApp = function() {
     const trocoVal = trocoInput ? trocoInput.value.trim() : '';
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const subtotalFormatted = formatCurrency(subtotal);
+    const subtotalFormatted = 'R$ ' + subtotal.toFixed(2).replace('.', ',');
 
-    let payText = 'Pix';
-    if (selectedPaymentMethod === 'cartao') payText = 'Cartão';
-    if (selectedPaymentMethod === 'dinheiro') {
-        payText = trocoVal ? `Dinheiro (Troco para ${trocoVal})` : 'Dinheiro';
-    }
+    let text = `pedido via site by Onira.fly
 
-    let msg = `Olá! Gostaria de fazer um pedido na *Curinga Cozinha Personalizada*:
+`;
+    text += `Solicitação de Retirada no balcão
 
 `;
 
     cart.forEach(item => {
-        const itemTotal = formatCurrency(item.price * item.qty);
-        msg += `▪ ${item.qty}x *${item.name}* — ${itemTotal}
+        let itemHeader = `${item.qty}x ${item.name}`;
+        if (item.portion) itemHeader += ` · ${item.portion}`;
+        text += `${itemHeader}
 `;
+
+        if (item.addons && Array.isArray(item.addons) && item.addons.length > 0) {
+            item.addons.forEach(a => {
+                text += `+ ${a.name || a}
+`;
+            });
+        }
+
         if (item.obs) {
-            msg += `   _Obs: ${item.obs}_
+            text += `+ ${item.obs}
 `;
         }
+
+        const itemTotal = (item.price * item.qty).toFixed(2).replace('.', ',');
+        text += `R$ ${itemTotal}
+
+`;
     });
 
-    msg += `
-*Total:* ${subtotalFormatted}`;
-    msg += `
-*Pagamento:* ${payText}`;
+    text += `Itens: ${subtotalFormatted}
+`;
+    text += `Total: ${subtotalFormatted}
+
+`;
 
     if (clientName) {
-        msg += `
-*Cliente:* ${clientName}`;
+        text += `${clientName}
+
+`;
     }
 
-    msg += `
+    if (selectedPaymentMethod === 'pix') {
+        text += `Pagamento em Pix — combinamos a chave por aqui
 
-_Pedido gerado pelo cardápio digital da Curinga Cozinha._`;
+`;
+    } else if (selectedPaymentMethod === 'cartao') {
+        text += `Pagamento no Cartão — favor trazer a maquininha
 
-    const encoded = encodeURIComponent(msg);
+`;
+    } else if (selectedPaymentMethod === 'dinheiro') {
+        const change = trocoVal ? `troco para ${trocoVal}` : 'sem necessidade de troco';
+        text += `Pagamento em Dinheiro — ${change}
+
+`;
+    } else {
+        text += `Pagamento em Pix — combinamos a chave por aqui
+
+`;
+    }
+
+    text += `Enviado pelo site do Curinga`;
+
+    const encoded = encodeURIComponent(text);
     const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`;
     window.open(url, '_blank');
 };

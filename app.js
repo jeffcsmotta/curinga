@@ -1,14 +1,14 @@
-﻿/**
+/**
  * Curinga Cozinha Personalizada
- * Card├ípio Digital & Sistema de Pedidos Direto no WhatsApp
- * Congelados Artesanais com Personalidade ÔÇö Feito com amor, tempero e personalidade.
+ * Cardápio Digital & Sistema de Pedidos Direto no WhatsApp
+ * Congelados Artesanais — Feito com amor, tempero e personalidade.
  * Powered by Onira Labs
  */
 
 // WhatsApp Oficial da Curinga Cozinha Personalizada
 const WHATSAPP_PHONE = '5554991018416';
 
-// Cat├ílogo Real ÔÇö Card├ípio Oficial da Curinga (9 Produtos Congelados + 3 Encomendas)
+// Catálogo Real — Cardápio Oficial da Curinga (9 Produtos Congelados + 3 Encomendas)
 const PRODUCTS = [
     {
         id: 'curinga-001',
@@ -16,43 +16,39 @@ const PRODUCTS = [
         category: 'cremes',
         group: 'Cremes & Sopas',
         desc: 'Creme aveludado de aspargos frescos, preparado artesanalmente com temperos selecionados. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/creme_aspargos.jpg',
-        price: 30.00,
-        hasAdicionais: false
+        price: 30.00
     },
     {
         id: 'curinga-002',
         name: 'Ragu de Carne de Panela',
         category: 'molhos',
         group: 'Molhos & Ragus',
-        desc: 'Ragu r├║stico de carne de panela cozida lentamente, com molho encorpado de tomate e ervas. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Ragu rústico de carne de panela cozida lentamente, com molho encorpado de tomate e ervas. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/ragu_carne.jpg',
-        price: 30.00,
-        hasAdicionais: false
+        price: 30.00
     },
     {
         id: 'curinga-003',
         name: 'Creme de Aipim com Bacon',
         category: 'cremes',
         group: 'Cremes & Sopas',
-        desc: 'Creme cremoso de aipim (mandioca) com peda├ºos crocantes de bacon. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Creme saboroso e encorpado de aipim com pedaços crocantes de bacon dourado. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/creme_aipim_bacon.jpg',
-        price: 25.00,
-        hasAdicionais: false
+        price: 25.00
     },
     {
         id: 'curinga-004',
         name: 'Creme de Aipim',
         category: 'cremes',
         group: 'Cremes & Sopas',
-        desc: 'Creme suave e reconfortante de aipim (mandioca), puro e artesanal. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Creme suave e reconfortante de aipim puro, feito com temperos caseiros naturais. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/creme_aipim.jpg',
-        price: 20.00,
-        hasAdicionais: false
+        price: 20.00
     },
     {
         id: 'curinga-005',
@@ -60,108 +56,81 @@ const PRODUCTS = [
         category: 'molhos',
         group: 'Molhos & Ragus',
         desc: 'Molho cremoso de queijo para massas, gratinados e acompanhamentos. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/molho_queijo.jpg',
-        price: 30.00,
-        hasAdicionais: false
+        price: 30.00
     },
     {
         id: 'curinga-006',
-        name: 'Molho Pesto',
+        name: 'Molho Pesto Tradicional',
         category: 'molhos',
         group: 'Molhos & Ragus',
-        desc: 'Molho pesto artesanal de manjeric├úo fresco com azeite extra virgem, pinoli e parmes├úo. Produto congelado, pronta entrega.',
-        badge: 'Premium Ô¡É',
+        desc: 'Molho pesto artesanal de manjericão fresco com azeite de oliva extra virgem e nozes. Produto congelado, pronta entrega.',
+        badge: 'Especial',
         img: 'assets/produtos/molho_pesto.jpg',
-        price: 40.00,
-        hasAdicionais: false
+        price: 40.00
     },
     {
         id: 'curinga-007',
         name: 'Molho de Cogumelos',
         category: 'molhos',
         group: 'Molhos & Ragus',
-        desc: 'Molho aveludado de cogumelos selecionados com ervas frescas. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Molho aveludado de cogumelos frescos com ervas aromáticas. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/molho_cogumelos.jpg',
-        price: 30.00,
-        hasAdicionais: false
+        price: 30.00
     },
     {
         id: 'curinga-008',
-        name: 'Molho Pomodoro',
+        name: 'Molho Pomodoro Caseiro',
         category: 'molhos',
         group: 'Molhos & Ragus',
-        desc: 'Molho cl├íssico de tomate italiano, lento e arom├ítico, com manjeric├úo fresco. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Molho clássico de tomate, apurado lentamente com manjericão fresco e azeite. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/molho_pomodoro.jpg',
-        price: 25.00,
-        hasAdicionais: false
+        price: 25.00
     },
     {
         id: 'curinga-009',
-        name: 'Caldo de Ossos',
+        name: 'Caldo de Ossos Concentrado',
         category: 'caldos',
         group: 'Caldos',
-        desc: 'Caldo nutritivo de ossos bovinos cozido por horas, rico em col├ígeno e sabor. Produto congelado, pronta entrega.',
-        badge: 'Pronta Entrega ÔØä´©Å',
+        desc: 'Caldo nutritivo de ossos bovinos cozido lentamente por horas, rico em colágeno. Produto congelado, pronta entrega.',
+        badge: 'Pronta Entrega',
         img: 'assets/produtos/caldo_ossos.jpg',
-        price: 12.00,
-        hasAdicionais: false
+        price: 12.00
     }
 ];
 
-// Encomendas (sem pre├ºo, consultar via WhatsApp)
-const ENCOMENDAS = [
-    {
-        id: 'enc-001',
-        name: 'Bucho',
-        icon: 'beef',
-        desc: 'Preparado sob encomenda. Consulte prazos e disponibilidade pelo WhatsApp.'
-    },
-    {
-        id: 'enc-002',
-        name: 'Caldo para Sopa',
-        icon: 'soup',
-        desc: 'Caldo artesanal para sopas, preparado sob encomenda.'
-    },
-    {
-        id: 'enc-003',
-        name: 'Pesto',
-        icon: 'leaf',
-        desc: 'Pesto fresco artesanal sob encomenda em quantidades maiores.'
-    }
-];
-
-// Categorias do Cat├ílogo
+// Categorias do Catálogo
 const DEFAULT_CATEGORIES = [
     { id: 'todos', name: 'Todos', icon: 'layout-grid' },
     { id: 'cremes', name: 'Cremes & Sopas', icon: 'soup' },
     { id: 'molhos', name: 'Molhos & Ragus', icon: 'flame' },
-    { id: 'caldos', name: 'Caldos', icon: 'droplets' }
+    { id: 'caldos', name: 'Caldos Especiais', icon: 'droplets' }
 ];
 
 // Conceitos por Categoria
 const CATEGORY_CONCEPTS = {
     'todos': {
-        title: 'Card├ípio Completo',
-        desc: 'Todos os produtos congelados dispon├¡veis para pronta entrega. Feitos com amor, tempero e personalidade.'
+        title: 'Cardápio Completo',
+        desc: 'Todos os produtos congelados disponíveis para pronta entrega. Feitos com amor, tempero e personalidade.'
     },
     'cremes': {
-        title: '­ƒÑú Cremes & Sopas Artesanais',
-        desc: 'Cremes aveludados e reconfortantes, feitos com ingredientes frescos e selecionados.'
+        title: 'Cremes & Sopas Artesanais',
+        desc: 'Cremes aveludados e reconfortantes, feitos artesanalmente com ingredientes frescos.'
     },
     'molhos': {
-        title: '­ƒìØ Molhos & Ragus',
-        desc: 'Molhos artesanais para elevar qualquer prato. Desde o cl├íssico pomodoro at├® o ragu de carne de panela.'
+        title: 'Molhos & Ragus Caseiros',
+        desc: 'Molhos encorpados e saborosos para enriquecer suas massas e pratos do dia a dia.'
     },
     'caldos': {
-        title: '­ƒì▓ Caldos Nutritivos',
-        desc: 'Caldos ricos e nutritivos, cozidos lentamente para m├íximo sabor e benef├¡cios.'
+        title: 'Caldos Nutritivos',
+        desc: 'Caldos artesanais cozidos lentamente para máximo sabor e nutrientes.'
     }
 };
 
-// Estado da Aplica├º├úo
+// Estado da Aplicação
 let cart = [];
 let selectedPaymentMethod = 'pix';
 let activeCategory = 'todos';
@@ -169,7 +138,7 @@ let searchQuery = '';
 let currentModalProduct = null;
 let currentModalQty = 1;
 
-// Utilit├írios
+// Utilitários
 function formatCurrency(value) {
     return 'R$ ' + value.toFixed(2).replace('.', ',');
 }
@@ -187,7 +156,7 @@ function showToast(message) {
     setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
-// Persist├¬ncia do Carrinho
+// Persistência do Carrinho
 function saveCartToStorage() {
     try {
         localStorage.setItem('curinga_cart', JSON.stringify(cart));
@@ -267,14 +236,14 @@ function renderProducts() {
     const descEl = document.getElementById('category-concept-desc');
     const countEl = document.getElementById('products-count-badge');
 
-    if (titleEl) titleEl.innerHTML = searchQuery ? `Busca: "${searchQuery}"` : conceptInfo.title;
+    if (titleEl) titleEl.textContent = searchQuery ? `Busca: "${searchQuery}"` : conceptInfo.title;
     if (descEl) descEl.textContent = searchQuery ? `Mostrando produtos que correspondem ao termo "${searchQuery}".` : conceptInfo.desc;
     if (countEl) countEl.textContent = `${filtered.length} ${filtered.length === 1 ? 'produto' : 'produtos'}`;
 
     if (filtered.length === 0) {
         catalogGrid.innerHTML = `
             <div class="empty-catalog-msg">
-                <i data-lucide="search-x" style="width:48px;height:48px;color:var(--text-muted);"></i>
+                <i data-lucide="search-x" style="width:40px;height:40px;color:var(--text-muted);"></i>
                 <p>Nenhum produto encontrado.</p>
                 <button class="btn-clean-filter" onclick="window.filterCategory('todos'); window.clearSearch();">Ver todos os produtos</button>
             </div>
@@ -285,7 +254,7 @@ function renderProducts() {
 
     catalogGrid.innerHTML = filtered.map(prod => {
         const priceFormatted = formatCurrency(prod.price);
-        const badgeClass = prod.badge.includes('Premium') ? 'badge-destaque' : 'badge-congelado';
+        const badgeClass = prod.badge === 'Especial' ? 'badge-destaque' : 'badge-congelado';
 
         return `
             <article class="menu-card" data-id="${prod.id}">
@@ -300,7 +269,7 @@ function renderProducts() {
                     <p class="card-desc" onclick="window.openProductModal('${prod.id}')">${prod.desc || ''}</p>
                     <div class="card-bottom">
                         <div class="card-price-block" onclick="window.openProductModal('${prod.id}')">
-                            <span class="price-label">Valor:</span>
+                            <span class="price-label">Preço:</span>
                             <span class="price-value">${priceFormatted}</span>
                         </div>
                         <button type="button" class="btn-add-item" onclick="event.stopPropagation(); window.openProductModal('${prod.id}')" aria-label="Adicionar ${prod.name}">
@@ -327,17 +296,30 @@ window.openProductModal = function(productId) {
     const modal = document.getElementById('product-modal');
     if (!modal) return;
 
-    document.getElementById('modal-img').src = prod.img;
-    document.getElementById('modal-img').alt = prod.name;
-    document.getElementById('modal-title').textContent = prod.name;
-    document.getElementById('modal-desc').textContent = prod.desc;
-    document.getElementById('modal-price').textContent = formatCurrency(prod.price);
-    document.getElementById('modal-qty-value').textContent = '1';
+    const imgEl = document.getElementById('modal-img');
+    if (imgEl) {
+        imgEl.src = prod.img;
+        imgEl.alt = prod.name;
+    }
+    const titleEl = document.getElementById('modal-title');
+    if (titleEl) titleEl.textContent = prod.name;
+
+    const descEl = document.getElementById('modal-desc');
+    if (descEl) descEl.textContent = prod.desc;
+
+    const priceEl = document.getElementById('modal-price');
+    if (priceEl) priceEl.textContent = formatCurrency(prod.price);
+
+    const qtyEl = document.getElementById('modal-qty-value');
+    if (qtyEl) qtyEl.textContent = '1';
+
     const obsInput = document.getElementById('modal-obs');
     if (obsInput) obsInput.value = '';
 
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    if (window.lucide) window.lucide.createIcons();
 };
 
 window.closeProductModal = function() {
@@ -349,20 +331,22 @@ window.closeProductModal = function() {
 
 window.changeModalQty = function(delta) {
     currentModalQty = Math.max(1, currentModalQty + delta);
-    const valEl = document.getElementById('modal-qty-value');
-    if (valEl) valEl.textContent = currentModalQty;
+    const el = document.getElementById('modal-qty-value');
+    if (el) el.textContent = currentModalQty;
+    if (currentModalProduct) {
+        const priceEl = document.getElementById('modal-price');
+        if (priceEl) priceEl.textContent = formatCurrency(currentModalProduct.price * currentModalQty);
+    }
 };
 
 window.addToCartFromModal = function() {
     if (!currentModalProduct) return;
 
-    const obs = (document.getElementById('modal-obs')?.value || '').trim();
+    const obsInput = document.getElementById('modal-obs');
+    const obs = obsInput ? obsInput.value.trim() : '';
 
-    const existingIndex = cart.findIndex(item =>
-        item.id === currentModalProduct.id && item.obs === obs
-    );
-
-    if (existingIndex >= 0) {
+    const existingIndex = cart.findIndex(item => item.id === currentModalProduct.id && item.obs === obs);
+    if (existingIndex > -1) {
         cart[existingIndex].qty += currentModalQty;
     } else {
         cart.push({
@@ -377,37 +361,61 @@ window.addToCartFromModal = function() {
 
     saveCartToStorage();
     updateCartUI();
-    window.closeProductModal();
-    showToast(`${currentModalProduct.name} adicionado!`);
+    closeProductModal();
+    showToast(`${currentModalProduct.name} adicionado ao pedido!`);
 };
 
-// Carrinho UI
+// Gerenciamento do Carrinho
+window.openCart = function() {
+    const drawer = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-overlay');
+    if (drawer) drawer.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeCart = function() {
+    const drawer = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-overlay');
+    if (drawer) drawer.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    document.body.style.overflow = '';
+};
+
+window.changeCartItemQty = function(index, delta) {
+    if (!cart[index]) return;
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+    saveCartToStorage();
+    updateCartUI();
+};
+
+window.clearCart = function() {
+    if (cart.length === 0) return;
+    cart = [];
+    saveCartToStorage();
+    updateCartUI();
+    showToast('Pedido limpo.');
+};
+
+window.setPaymentMethod = function(method) {
+    selectedPaymentMethod = method;
+    document.querySelectorAll('.pay-method-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.method === method);
+    });
+    const trocoBox = document.getElementById('troco-input-box');
+    if (trocoBox) {
+        trocoBox.style.display = method === 'dinheiro' ? 'block' : 'none';
+    }
+};
+
 function updateCartUI() {
     const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-    // Header cart button
-    const cartBtn = document.getElementById('btn-cart-nav');
-    const cartCount = document.getElementById('cart-count');
-    const cartTotalHeader = document.getElementById('cart-total-nav');
-    const trashBtn = document.getElementById('btn-header-trash');
-
-    if (cartBtn) {
-        cartBtn.classList.toggle('cart-has-items', totalItems > 0);
-    }
-    if (cartCount) {
-        cartCount.style.display = totalItems > 0 ? 'inline-flex' : 'none';
-        cartCount.textContent = totalItems;
-    }
-    if (cartTotalHeader) {
-        cartTotalHeader.style.display = totalItems > 0 ? 'inline' : 'none';
-        cartTotalHeader.textContent = formatCurrency(subtotal);
-    }
-    if (trashBtn) {
-        trashBtn.style.display = totalItems > 0 ? 'inline-flex' : 'none';
-    }
-
-    // Floating bar (mobile)
+    // Floating bar
     const floatingBar = document.getElementById('cart-floating-bar');
     const floatingCount = document.getElementById('floating-cart-count');
     const floatingTotal = document.getElementById('floating-cart-total');
@@ -428,7 +436,6 @@ function updateCartUI() {
     // Cart totals
     const subtotalEl = document.getElementById('cart-subtotal-val');
     const totalEl = document.getElementById('cart-total-val');
-
     if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
     if (totalEl) totalEl.textContent = formatCurrency(subtotal);
 }
@@ -440,160 +447,96 @@ function renderCartItems() {
     if (cart.length === 0) {
         list.innerHTML = `
             <div class="cart-empty-state">
-                <i data-lucide="shopping-bag" style="width:40px;height:40px;"></i>
-                <p>Seu pedido est├í vazio</p>
-                <small>Escolha entre nossos cremes, molhos e caldos artesanais</small>
+                <i data-lucide="shopping-bag"></i>
+                <p>Seu pedido está vazio.</p>
+                <p style="font-size:0.78rem;margin-top:4px;">Escolha cremes, molhos e caldos para começar.</p>
             </div>
         `;
         if (window.lucide) window.lucide.createIcons();
         return;
     }
 
-    list.innerHTML = cart.map((item, index) => `
-        <div class="cart-item">
-            <img src="${item.img}" alt="${item.name}" class="cart-item-img">
-            <div class="cart-item-info">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">${formatCurrency(item.price * item.qty)}</div>
-                ${item.obs ? `<div class="cart-item-obs">"${item.obs}"</div>` : ''}
+    list.innerHTML = cart.map((item, index) => {
+        const itemTotal = formatCurrency(item.price * item.qty);
+        return `
+            <div class="cart-item">
+                <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    ${item.obs ? `<div class="cart-item-obs">Obs: ${item.obs}</div>` : ''}
+                    <div class="cart-item-price">${itemTotal}</div>
+                </div>
+                <div class="cart-item-actions">
+                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, -1)">−</button>
+                    <span style="font-size:0.86rem;font-weight:700;min-width:18px;text-align:center;">${item.qty}</span>
+                    <button type="button" class="btn-cart-qty" onclick="window.changeCartItemQty(${index}, 1)">+</button>
+                </div>
             </div>
-            <div class="cart-item-qty">
-                <button onclick="window.changeCartItemQty(${index}, -1)">ÔêÆ</button>
-                <span>${item.qty}</span>
-                <button onclick="window.changeCartItemQty(${index}, 1)">+</button>
-            </div>
-            <button class="btn-remove-item" onclick="window.removeCartItem(${index})" aria-label="Remover ${item.name}">
-                <i data-lucide="trash-2" style="width:14px;height:14px;"></i>
-            </button>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     if (window.lucide) window.lucide.createIcons();
 }
 
-window.changeCartItemQty = function(index, delta) {
-    if (!cart[index]) return;
-    cart[index].qty = Math.max(1, cart[index].qty + delta);
-    saveCartToStorage();
-    updateCartUI();
-};
-
-window.removeCartItem = function(index) {
-    cart.splice(index, 1);
-    saveCartToStorage();
-    updateCartUI();
-};
-
-window.clearCart = function() {
-    cart = [];
-    saveCartToStorage();
-    updateCartUI();
-    showToast('Pedido limpo');
-};
-
-// Abrir/Fechar Carrinho
-window.openCart = function() {
-    const overlay = document.getElementById('cart-overlay');
-    const drawer = document.getElementById('cart-drawer');
-    if (overlay) overlay.classList.add('open');
-    if (drawer) drawer.classList.add('open');
-    document.body.style.overflow = 'hidden';
-};
-
-window.closeCart = function() {
-    const overlay = document.getElementById('cart-overlay');
-    const drawer = document.getElementById('cart-drawer');
-    if (overlay) overlay.classList.remove('open');
-    if (drawer) drawer.classList.remove('open');
-    document.body.style.overflow = '';
-};
-
-// Pagamento
-window.setPaymentMethod = function(method) {
-    selectedPaymentMethod = method;
-    document.querySelectorAll('.pay-method-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.method === method);
-    });
-    const trocoBox = document.getElementById('troco-input-box');
-    if (trocoBox) trocoBox.style.display = method === 'dinheiro' ? 'block' : 'none';
-};
-
-// Enviar Pedido no WhatsApp
+// Enviar Pedido via WhatsApp
 window.submitOrderToWhatsApp = function() {
     if (cart.length === 0) {
-        showToast('Adicione produtos ao pedido');
+        alert('Seu pedido está vazio! Adicione ao menos um item antes de enviar.');
         return;
     }
 
-    const clientName = (document.getElementById('client-name')?.value || '').trim();
+    const clientNameInput = document.getElementById('client-name');
+    const clientName = clientNameInput ? clientNameInput.value.trim() : '';
+
+    const trocoInput = document.getElementById('troco-val');
+    const trocoVal = trocoInput ? trocoInput.value.trim() : '';
+
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const subtotalFormatted = formatCurrency(subtotal);
 
-    const paymentLabels = { pix: 'PIX', cartao: 'Cart├úo', dinheiro: 'Dinheiro' };
-    const paymentLabel = paymentLabels[selectedPaymentMethod] || 'PIX';
-
-    let trocoText = '';
+    let payText = 'Pix';
+    if (selectedPaymentMethod === 'cartao') payText = 'Cartão';
     if (selectedPaymentMethod === 'dinheiro') {
-        const trocoVal = (document.getElementById('troco-val')?.value || '').trim();
-        if (trocoVal) trocoText = `\n­ƒÆÁ Troco para: ${trocoVal}`;
+        payText = trocoVal ? `Dinheiro (Troco para ${trocoVal})` : 'Dinheiro';
     }
 
-    let msg = `­ƒâÅ *PEDIDO ÔÇö CURINGA COZINHA PERSONALIZADA*\n`;
-    msg += `ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü\n\n`;
+    let msg = `Olá! Gostaria de fazer um pedido na *Curinga Cozinha Personalizada*:
 
-    cart.forEach((item, i) => {
-        msg += `${i + 1}. *${item.name}* x${item.qty} ÔÇö ${formatCurrency(item.price * item.qty)}\n`;
-        if (item.obs) msg += `   ­ƒôØ _${item.obs}_\n`;
+`;
+
+    cart.forEach(item => {
+        const itemTotal = formatCurrency(item.price * item.qty);
+        msg += `▪ ${item.qty}x *${item.name}* — ${itemTotal}
+`;
+        if (item.obs) {
+            msg += `   _Obs: ${item.obs}_
+`;
+        }
     });
 
-    msg += `\nÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü\n`;
-    msg += `­ƒÆ░ *Total: ${formatCurrency(subtotal)}*\n`;
-    msg += `­ƒÆ│ Pagamento: ${paymentLabel}${trocoText}\n`;
+    msg += `
+*Total:* ${subtotalFormatted}`;
+    msg += `
+*Pagamento:* ${payText}`;
 
     if (clientName) {
-        msg += `­ƒæñ Cliente: ${clientName}\n`;
+        msg += `
+*Cliente:* ${clientName}`;
     }
 
-    msg += `\n_Pedido feito pelo card├ípio digital Curinga_`;
+    msg += `
+
+_Pedido gerado pelo cardápio digital da Curinga Cozinha._`;
 
     const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`, '_blank');
-
-    cart = [];
-    saveCartToStorage();
-    updateCartUI();
-    window.closeCart();
-    showToast('Pedido enviado! Ô£à');
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`;
+    window.open(url, '_blank');
 };
 
-// Encomenda via WhatsApp
-window.openEncomendaWhatsApp = function(productName) {
-    const msg = encodeURIComponent(
-        `Ol├í! Gostaria de fazer uma *encomenda* de *${productName}*. Poderia me informar sobre prazos e disponibilidade? ­ƒâÅ`
-    );
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
-};
-
-// Inicializa├º├úo
+// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     loadCartFromStorage();
     renderCategories();
     renderProducts();
     updateCartUI();
-
-    // Close modal on overlay click
-    const modalOverlay = document.getElementById('product-modal');
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) window.closeProductModal();
-        });
-    }
-
-    // Close cart on overlay click
-    const cartOverlay = document.getElementById('cart-overlay');
-    if (cartOverlay) {
-        cartOverlay.addEventListener('click', () => window.closeCart());
-    }
-
-    // Lucide icons
-    if (window.lucide) window.lucide.createIcons();
 });

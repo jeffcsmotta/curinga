@@ -1058,23 +1058,24 @@ body {
     background: var(--primary-red-hover);
 }
 
+
 /* ==========================================================================
-   Cart Drawer (DARK MODE REFINADO)
+   Cart Drawer (DARK MODE ROBUSTO & COMPLETO)
    ========================================================================== */
 .cart-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 8, 8, 0.75);
+    background: rgba(8, 7, 7, 0.78);
     backdrop-filter: blur(6px);
-    z-index: 1010;
+    z-index: 1040;
     display: none;
     opacity: 0;
-    transition: opacity var(--transition-normal);
+    transition: opacity 0.25s ease;
 }
 
 .cart-overlay.open {
-    display: block;
-    opacity: 1;
+    display: block !important;
+    opacity: 1 !important;
 }
 
 .cart-drawer {
@@ -1083,53 +1084,55 @@ body {
     right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 440px;
-    background: #141312;
+    max-width: 420px;
+    background: #121110;
     color: #F5F2EC;
-    z-index: 1020;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+    z-index: 1050;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
-    transition: transform var(--transition-normal);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
 }
 
 .cart-drawer.open {
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 .cart-header {
-    padding: var(--space-4) var(--space-5);
+    padding: 18px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: #181716;
+    flex-shrink: 0;
 }
 
-.cart-header h3 {
-    font-size: var(--font-size-lg);
+.cart-header-title {
+    font-size: 1.1rem;
     font-weight: 700;
     color: #FFFFFF;
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 8px;
 }
 
 .btn-close-cart {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #A8A29E;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-full);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
 }
 
 .btn-close-cart:hover {
@@ -1137,72 +1140,100 @@ body {
     color: #FFFFFF;
 }
 
-.cart-items {
+.cart-items-list {
     flex: 1;
     overflow-y: auto;
-    padding: var(--space-4) var(--space-5);
+    padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: 12px;
 }
 
-.cart-empty {
+.cart-empty-state {
     margin: auto;
     text-align: center;
     color: #78716C;
-    padding: var(--space-8) 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.cart-empty svg {
-    width: 56px;
-    height: 56px;
+.cart-empty-state svg {
+    width: 52px;
+    height: 52px;
     stroke: #57534E;
-    margin-bottom: var(--space-3);
+}
+
+.cart-empty-state p {
+    font-size: 0.95rem;
+    color: #A8A29E;
 }
 
 .cart-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: var(--space-3);
+    gap: 12px;
+    padding: 12px;
     background: #1C1A18;
-    border-radius: var(--radius-md);
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    gap: var(--space-3);
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
 }
 
 .cart-item-info {
     flex: 1;
+    min-width: 0;
 }
 
-.cart-item-title {
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-    color: #F5F2EC;
+.cart-item-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-item-obs {
+    font-size: 0.72rem;
+    color: #A8A29E;
+    font-style: italic;
     margin-bottom: 2px;
 }
 
 .cart-item-price {
-    font-size: var(--font-size-xs);
-    color: var(--color-terracotta-light);
-    font-weight: 700;
+    font-size: 0.84rem;
+    color: #BA3C2A;
+    font-weight: 800;
 }
 
-.cart-item-qty {
+.cart-item-actions {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    background: #242220;
+    gap: 6px;
+    background: #252321;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-full);
-    padding: 2px 8px;
+    border-radius: 999px;
+    padding: 3px 8px;
+    flex-shrink: 0;
 }
 
-.btn-qty {
+.btn-cart-qty {
     background: none;
     border: none;
-    color: #F5F2EC;
-    font-weight: bold;
+    color: #FFFFFF;
+    font-weight: 800;
     font-size: 1rem;
     cursor: pointer;
     width: 22px;
@@ -1211,451 +1242,252 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: background var(--transition-fast);
+    transition: background 0.15s ease;
 }
 
-.btn-qty:hover {
+.btn-cart-qty:hover {
     background: rgba(255, 255, 255, 0.15);
 }
 
-.qty-display {
-    font-size: var(--font-size-xs);
+.cart-form-group {
+    padding: 10px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.cart-label {
+    font-size: 0.72rem;
     font-weight: 700;
-    min-width: 16px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.cart-footer {
-    padding: var(--space-4) var(--space-5);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: #181716;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-}
-
-.cart-total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.cart-total-label {
-    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: #A8A29E;
-}
-
-.cart-total-value {
-    font-size: var(--font-size-xl);
-    font-weight: 800;
-    color: #FFFFFF;
-}
-
-.cart-delivery-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
 }
 
 .cart-input {
     width: 100%;
     padding: 10px 14px;
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    font-size: var(--font-size-xs);
-    background: #22201E;
+    font-size: 0.85rem;
+    background: #1C1A18;
     color: #FFFFFF;
-    transition: border-color var(--transition-fast);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
 .cart-input::placeholder {
-    color: #78716C;
+    color: #6E6A66;
 }
 
 .cart-input:focus {
     outline: none;
-    border-color: var(--color-terracotta);
-    background: #282624;
+    border-color: #BA3C2A;
+    background: #242220;
 }
 
-.btn-whatsapp-checkout {
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.pay-method-btn {
+    background: #1C1A18;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 9px 6px;
+    color: #A8A29E;
+    font-size: 0.78rem;
+    font-weight: 700;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    background: #25D366;
-    color: #0C0B0A;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: var(--space-3) var(--space-4);
-    font-weight: 800;
-    font-size: var(--font-size-sm);
+    gap: 4px;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
 }
 
-.btn-whatsapp-checkout:hover {
-    filter: brightness(1.08);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
-}
-
-.btn-whatsapp-checkout:disabled {
-    background: #2E2D2B;
-    color: #6E6A66;
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
-/* ==========================================================================
-   Barra Flutuante Inferior de Pedido (Mobile)
-   ========================================================================== */
-.cart-floating-bar {
-    position: fixed;
-    bottom: 16px;
-    left: 18px;
-    right: 18px;
-    max-width: 480px;
-    margin: 0 auto;
-    background: var(--text-title);
+.pay-method-btn:hover {
+    border-color: rgba(255, 255, 255, 0.25);
     color: #FFFFFF;
-    padding: 12px 18px;
-    border-radius: var(--radius-pill);
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.25);
-    z-index: 850;
-    cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
-.cart-floating-bar.visible {
+.pay-method-btn.active {
+    background: rgba(186, 60, 42, 0.18);
+    border-color: #BA3C2A;
+    color: #FFFFFF;
+}
+
+.cart-checkout-section {
+    padding: 14px 20px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #181716;
     display: flex;
-}
-
-.cart-floating-bar:hover {
-    transform: translateY(-2px);
-}
-
-.floating-bar-left {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
-    font-size: 0.88rem;
+    flex-shrink: 0;
+}
+
+.cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+    color: #A8A29E;
+}
+
+.cart-total-row {
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+    font-size: 1rem;
+    color: #FFFFFF;
     font-weight: 700;
 }
 
-.floating-count-pill {
-    padding: 2px 8px;
-    background: var(--primary-red);
-    border-radius: var(--radius-pill);
-    font-size: 0.72rem;
-    font-weight: 800;
-}
-
-.floating-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.95rem;
-    font-weight: 800;
+.cart-total-value {
+    font-size: 1.35rem;
+    font-weight: 900;
     color: #FFFFFF;
 }
 
-/* ==========================================================================
-   Botão Flutuante WhatsApp
-   ========================================================================== */
-.whatsapp-float {
-    position: fixed;
-    bottom: 84px;
-    right: 18px;
-    width: 52px;
-    height: 52px;
+.btn-submit-order {
+    width: 100%;
+    padding: 14px 18px;
+    background: #25D366;
+    color: #08140B;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 50%;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
-    z-index: 840;
-    text-decoration: none;
+    gap: 8px;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
     transition: all 0.2s ease;
 }
 
-.whatsapp-float:hover {
-    transform: scale(1.08);
-    background: #1FB855;
+.btn-submit-order:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+}
+
+.cart-onira-tag {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #78716C;
 }
 
 /* ==========================================================================
-   Widget Proposta Comercial Onira (Discreto)
+   WIDGET FLUTUANTE DA PROPOSTA ONIRA (.onira-cta) — AZUL INSTITUCIONAL MASTER
    ========================================================================== */
 .onira-cta {
     position: fixed;
-    bottom: 16px;
+    bottom: 20px;
     left: 16px;
-    display: flex;
+    display: flex !important;
     align-items: center;
-    gap: 10px;
-    padding: 8px 14px;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    z-index: 840;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    transition: all 0.2s ease;
+    gap: 12px;
+    padding: 8px 16px 8px 8px;
+    background: linear-gradient(145deg, #09192E 0%, #061224 100%) !important;
+    border: 1px solid rgba(56, 116, 203, 0.4) !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    z-index: 900;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(16px);
+    transition: all 0.25s ease;
 }
 
 .onira-cta:hover {
-    border-color: var(--primary-red);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    border-color: rgba(56, 116, 203, 0.75) !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(10, 102, 194, 0.45) !important;
 }
 
 .onira-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 50% !important;
+    border: 2px solid #0A66C2 !important;
+    box-shadow: 0 0 14px rgba(10, 102, 194, 0.5) !important;
     object-fit: cover;
-    border: 1.5px solid var(--primary-red);
+    flex-shrink: 0;
 }
 
 .onira-text-col {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .onira-hook {
-    font-size: 0.66rem;
-    color: var(--text-muted);
-    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    color: #38BDF8 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
 }
 
 .onira-call {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 .onira-price-label {
-    font-size: 0.7rem;
-    color: var(--text-title);
-    font-weight: 700;
+    font-size: 0.78rem !important;
+    color: #94A3B8 !important;
 }
 
 .onira-price-label strong {
-    color: var(--primary-red);
+    color: #F8FAFC !important;
 }
 
 .onira-link-text {
-    font-size: 0.68rem;
-    color: var(--primary-red);
-    font-weight: 700;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
 }
 
-@media (max-width: 640px) {
-    .onira-cta {
-        display: none; /* Mantém limpo no mobile para evitar poluição */
-    }
-}
-
-/* Toast */
-.toast-notification {
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    padding: 10px 20px;
-    background: var(--text-title);
-    color: #FFFFFF;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border-radius: var(--radius-pill);
-    z-index: 9999;
-    opacity: 0;
-    transition: all 0.25s ease;
-    pointer-events: none;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-}
-
-.toast-notification.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-
-/* ==========================================================================
-   Card Quantity Controls (+ e - diretos no card)
-   ========================================================================== */
-.card-action-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.card-qty-control {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #FAF8F5;
-    border: 1.5px solid var(--primary-red);
-    border-radius: var(--radius-pill);
-    padding: 3px 6px;
-    box-shadow: 0 2px 8px rgba(186, 60, 42, 0.15);
-}
-
-.btn-card-qty-btn {
-    background: var(--primary-red);
-    color: #FFFFFF;
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.05rem;
+.onira-link-text::after {
+    content: ' →';
+    color: #38BDF8;
     font-weight: 800;
-    cursor: pointer;
-    transition: transform 0.15s ease, background 0.15s ease;
-    user-select: none;
-    line-height: 1;
 }
 
-.btn-card-qty-btn:hover {
-    background: var(--primary-red-hover);
-    transform: scale(1.1);
-}
-
-.btn-card-qty-btn:active {
-    transform: scale(0.95);
-}
-
-.card-qty-count {
-    font-size: 0.92rem;
-    font-weight: 800;
-    color: var(--text-title);
-    min-width: 22px;
-    text-align: center;
-    user-select: none;
-}
-
-/* ==========================================================================
-   Mobile Floating Widgets (Barra de Pedido, WhatsApp & Onira CTA)
-   ========================================================================== */
-.cart-floating-bar {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    max-width: 480px;
-    margin: 0 auto;
-    background: #181716;
-    color: #FFFFFF;
-    padding: 13px 20px;
-    border-radius: var(--radius-pill);
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    z-index: 950;
-    cursor: pointer;
-    transition: transform 0.25s ease, bottom 0.25s ease;
-}
-
-.cart-floating-bar.visible {
-    display: flex;
-    animation: slideUpFloating 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes slideUpFloating {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 18px;
-    width: 52px;
-    height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 50%;
-    box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4);
-    z-index: 900;
-    text-decoration: none;
-    transition: all 0.25s ease;
-}
-
-.whatsapp-float:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55);
-}
-
-.onira-cta {
-    position: fixed;
-    bottom: 20px;
-    left: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 14px 7px 8px;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    z-index: 900;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    transition: all 0.25s ease;
-}
-
-.onira-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
-}
-
-/* Quando há itens no carrinho e a barra inferior surge no mobile, sobe os outros widgets */
+/* Ajuste inteligente quando a barra de pedido está ativa */
 body.has-cart-bar .whatsapp-float {
-    bottom: 84px;
+    bottom: 84px !important;
 }
 
 body.has-cart-bar .onira-cta {
-    bottom: 84px;
+    bottom: 84px !important;
 }
 
 @media (max-width: 640px) {
     .onira-cta {
         display: flex !important;
-        padding: 6px 12px 6px 6px;
-        max-width: 180px;
+        padding: 6px 12px 6px 6px !important;
+        max-width: 195px !important;
+        gap: 8px !important;
     }
     .onira-cta .onira-price-label {
-        display: none;
+        display: none !important;
     }
     .onira-cta .onira-hook {
-        font-size: 0.68rem;
+        font-size: 0.62rem !important;
     }
     .onira-cta .onira-link-text {
-        font-size: 0.72rem;
+        font-size: 0.72rem !important;
     }
     .onira-avatar {
-        width: 34px;
-        height: 34px;
+        width: 34px !important;
+        height: 34px !important;
     }
 }
